@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    tools {nodejs "node"}
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                // bat 'gradlew build'
+                // from: https://medium.com/@gustavo.guss/jenkins-starting-with-pipeline-doing-a-node-js-test-72c6057b67d4
+                // git 'https://github.com/jmako/NodeGoat'
+                bat 'npm install'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+                bat 'npm test'
+            }
+        }
+}
